@@ -1,0 +1,10 @@
+# start
+ bundles exec rails console
+
+# Insert new data
+ Album.create({title: 'album3'})
+
+_ => return value will be store from running SQL
+
+
+activesupport => Utility method provider
