@@ -24,7 +24,11 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
+    # automatically save the user_id with help of build
+    @album = current_user.albums.build(album_params)
+    #@album = Album.new(album_params)
+    #@album.user_id = current_user.id
+    #@album.user = current_user
 
     respond_to do |format|
       if @album.save
