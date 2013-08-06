@@ -1,10 +1,17 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :edit, :update, :create, :index] # except: [:index]
+
+  # Check if user has logged in or not
+  def auth_user
+    redirect_to new_user_session_url unless user_signed_in?      
+  end
 
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    #@albums = Album.all
+    @albums = current_user.albums.load
   end
 
   # GET /albums/1

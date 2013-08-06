@@ -9,7 +9,11 @@
 <body> 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<%= yield %>
 
+<%= render partial: 'shared/header' %>
+<hr/>
+<%= yield %>
+<hr/>
+<%= render 'shared/footer' %>
 </body>
 </html>
